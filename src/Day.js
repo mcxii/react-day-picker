@@ -16,6 +16,8 @@ export default function Day({
   tabIndex,
   empty,
   modifiers,
+  onMouseDown,
+  onMouseUp,
   onMouseEnter,
   onMouseLeave,
   onClick,
@@ -43,6 +45,8 @@ export default function Day({
       aria-selected={ariaSelected.toString()}
       onClick={handleEvent(onClick, day, modifiers)}
       onKeyDown={handleEvent(onKeyDown, day, modifiers)}
+      onMouseDown={handleEvent(onMouseDown, day, modifiers)}
+      onMouseUp={handleEvent(onMouseUp, day, modifiers)}
       onMouseEnter={handleEvent(onMouseEnter, day, modifiers)}
       onMouseLeave={handleEvent(onMouseLeave, day, modifiers)}
       onTouchEnd={handleEvent(onTouchEnd, day, modifiers)}
@@ -65,6 +69,8 @@ Day.propTypes = {
   modifiers: PropTypes.array,
   onClick: PropTypes.func,
   onKeyDown: PropTypes.func,
+  onMouseDown: PropTypes.func,
+  onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   onTouchEnd: PropTypes.func,
