@@ -25,6 +25,7 @@ export default function Day({
   onTouchStart,
   onTouchEnd,
   onFocus,
+  title,
   ariaLabel,
   ariaDisabled,
   ariaSelected,
@@ -40,6 +41,7 @@ export default function Day({
       className={className}
       tabIndex={tabIndex}
       role="gridcell"
+      title={title}
       aria-label={ariaLabel}
       aria-disabled={ariaDisabled.toString()}
       aria-selected={ariaSelected.toString()}
@@ -62,6 +64,7 @@ Day.propTypes = {
   day: PropTypes.instanceOf(Date).isRequired,
   children: PropTypes.node.isRequired,
 
+  title: PropTypes.string,
   ariaDisabled: PropTypes.bool,
   ariaLabel: PropTypes.string,
   ariaSelected: PropTypes.bool,
