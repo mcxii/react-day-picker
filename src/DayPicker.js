@@ -46,6 +46,7 @@ export default class DayPicker extends Component {
     onDayFocus: PropTypes.func,
     onMonthChange: PropTypes.func,
     onCaptionClick: PropTypes.func,
+    dayTitle: PropTypes.func,
 
     renderDay: PropTypes.func,
     weekdayComponent: deprecate(PropTypes.func, 'react-day-picker: the `weekdayComponent` prop is deprecated from v2.3. Please pass a React element to the `weekdayElement` prop instead.'), // eslint-disable-line max-len
@@ -399,6 +400,7 @@ export default class DayPicker extends Component {
         tabIndex = this.props.tabIndex;
       }
     }
+    const title = this.props.dayTitle ? this.props.dayTitle(day) : undefined;
     const key = `${day.getFullYear()}${day.getMonth()}${day.getDate()}`;
     return (
       <Day
@@ -409,6 +411,7 @@ export default class DayPicker extends Component {
 
         tabIndex={tabIndex}
 
+        title={title}
         ariaLabel={this.props.localeUtils.formatDay(day, this.props.locale)}
         ariaDisabled={isOutside || dayModifiers.indexOf('disabled') > -1}
         ariaSelected={dayModifiers.indexOf('selected') > -1}
