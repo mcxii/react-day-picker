@@ -37,6 +37,8 @@ export default class DayPicker extends Component {
     onKeyDown: PropTypes.func,
     onDayClick: PropTypes.func,
     onDayKeyDown: PropTypes.func,
+    onDayMouseUp: PropTypes.func,
+    onDayMouseDown: PropTypes.func,
     onDayMouseEnter: PropTypes.func,
     onDayMouseLeave: PropTypes.func,
     onDayTouchStart: PropTypes.func,
@@ -411,6 +413,8 @@ export default class DayPicker extends Component {
         ariaDisabled={isOutside || dayModifiers.indexOf('disabled') > -1}
         ariaSelected={dayModifiers.indexOf('selected') > -1}
 
+        onMouseDown={this.props.onDayMouseDown}
+        onMouseUp={this.props.onDayMouseUp}
         onMouseEnter={this.props.onDayMouseEnter}
         onMouseLeave={this.props.onDayMouseLeave}
         onKeyDown={this.handleDayKeyDown}
