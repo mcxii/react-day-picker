@@ -1,6 +1,8 @@
 # LocaleUtils
 
-`LocaleUtils` is a set of functions used to localize the component (see: [Custom localization](LocalizationCustom.md)). You may want to implement your own `LocaleUtils`, or override some of its functions.
+`LocaleUtils` is a set of functions used to localize the component (see: [Advanced localization](LocalizationAdvanced.md)). You may want to implement your own `LocaleUtils`, or override some of its functions.
+
+> Usually you won't need to use these functions. The component can be localized using `months`, `weekdaysLong`, `weekdaysShort` and `firstDayOfWeek` props.
 
 For example, this code renders the month's title as `M/YYYY` instead of the default:
 
@@ -23,7 +25,7 @@ Format the string used as `aria-label` for the given day.
 
 ### formatMonthTitle `(d: Date, locale: String) ⇒ String`
 
-Return the string used to format the month's title in the day picker for the given date `d`.
+Return the string used to format the month's title in the Day Picker for the given date `d`.
 
 ### formatWeekdayShort `(i: number, locale: String) ⇒ String`
 
@@ -31,11 +33,11 @@ Return the string used to render the weekday's short name, e.g. `Mo` for Monday.
 
 ### formatWeekdayLong `(i: number, locale: String) ⇒ String`
 
-Return the string used to render the weekday's long name, e.g. `Monday`. It is used mainly for ARIA.
+Return the string used to render the weekday's long name (starting from `0` as Sunday).
 
 ### getFirstDayOfWeek `(locale: String) ⇒ Number`
 
-Return the first day of the week for the given locale, e.g. `0` (Sunday) when `locale` is `en`.
+Return the first day of the week for the given locale (starting from `0` as Sunday).
 
 ### getMonths `(locale: String) ⇒ Array`
 

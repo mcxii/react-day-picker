@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions, react/forbid-prop-types */
+
 import React, { PropTypes } from 'react';
 
 function handleEvent(handler, day, modifiers) {
@@ -5,8 +7,8 @@ function handleEvent(handler, day, modifiers) {
     return undefined;
   }
   const dayState = {};
-  modifiers.forEach(modifier => { dayState[modifier] = true; });
-  return e => {
+  modifiers.forEach((modifier) => { dayState[modifier] = true; });
+  return (e) => {
     e.persist();
     handler(e, day, dayState);
   };
@@ -16,8 +18,6 @@ export default function Day({
   tabIndex,
   empty,
   modifiers,
-  onMouseDown,
-  onMouseUp,
   onMouseEnter,
   onMouseLeave,
   onClick,
@@ -25,7 +25,6 @@ export default function Day({
   onTouchStart,
   onTouchEnd,
   onFocus,
-  title,
   ariaLabel,
   ariaDisabled,
   ariaSelected,
@@ -34,26 +33,23 @@ export default function Day({
   let className = 'DayPicker-Day';
   className += modifiers.map(modifier => ` ${className}--${modifier}`).join('');
   if (empty) {
-    return <div role="gridcell" aria-disabled className={className} />;
+    return <div role="gridcell" aria-disabled className={ className } />;
   }
   return (
     <div
-      className={className}
-      tabIndex={tabIndex}
+      className={ className }
+      tabIndex={ tabIndex }
       role="gridcell"
-      title={title}
-      aria-label={ariaLabel}
-      aria-disabled={ariaDisabled.toString()}
-      aria-selected={ariaSelected.toString()}
-      onClick={handleEvent(onClick, day, modifiers)}
-      onKeyDown={handleEvent(onKeyDown, day, modifiers)}
-      onMouseDown={handleEvent(onMouseDown, day, modifiers)}
-      onMouseUp={handleEvent(onMouseUp, day, modifiers)}
-      onMouseEnter={handleEvent(onMouseEnter, day, modifiers)}
-      onMouseLeave={handleEvent(onMouseLeave, day, modifiers)}
-      onTouchEnd={handleEvent(onTouchEnd, day, modifiers)}
-      onTouchStart={handleEvent(onTouchStart, day, modifiers)}
-      onFocus={handleEvent(onFocus, day, modifiers)}
+      aria-label={ ariaLabel }
+      aria-disabled={ ariaDisabled.toString() }
+      aria-selected={ ariaSelected.toString() }
+      onClick={ handleEvent(onClick, day, modifiers) }
+      onKeyDown={ handleEvent(onKeyDown, day, modifiers) }
+      onMouseEnter={ handleEvent(onMouseEnter, day, modifiers) }
+      onMouseLeave={ handleEvent(onMouseLeave, day, modifiers) }
+      onTouchEnd={ handleEvent(onTouchEnd, day, modifiers) }
+      onTouchStart={ handleEvent(onTouchStart, day, modifiers) }
+      onFocus={ handleEvent(onFocus, day, modifiers) }
     >
       {children}
     </div>
@@ -64,7 +60,6 @@ Day.propTypes = {
   day: PropTypes.instanceOf(Date).isRequired,
   children: PropTypes.node.isRequired,
 
-  title: PropTypes.string,
   ariaDisabled: PropTypes.bool,
   ariaLabel: PropTypes.string,
   ariaSelected: PropTypes.bool,
@@ -72,8 +67,6 @@ Day.propTypes = {
   modifiers: PropTypes.array,
   onClick: PropTypes.func,
   onKeyDown: PropTypes.func,
-  onMouseDown: PropTypes.func,
-  onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   onTouchEnd: PropTypes.func,

@@ -1,10 +1,10 @@
 # Custom localization
 
-You can define your custom utility to localize the day picker – for example to reduce the size of your JavaScript bundle without using [external libraries](LocalizationMoment.md).
+You can define your custom utility to localize the Day Picker.
 
-The `DayPicker` component uses [localeUtils](LocaleUtils.md), a small set of functions defining how to display the day picker for the given locale. To localize the component, you can overwrite its behavior by passing your own custom set of functions to the `localeUtils` props.
+The `DayPicker` component internally uses [localeUtils](LocaleUtils.md), a small set of functions defining how to display the Day Picker for the given locale. You can overwrite its behavior by passing your own custom set of functions to the `localeUtils` props.
 
-[See an example](http://www.gpbl.org/react-day-picker/examples?localizedCustom).
+[See an example](http://react-day-picker.js.org/examples?localizedCustom).
 
 ## Code
 
@@ -14,11 +14,11 @@ The following `localeUtils` object is used to localize the calendar in English o
 
 const WEEKDAYS_LONG = {
   "en": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  "it": ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"]
+  "it": ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
 }
 const WEEKDAYS_SHORT = {
   "en": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-  "it": ["L", "M", "M", "G", "V", "S", "D"]
+  "it": ["D", "L", "M", "M", "G", "V", "S"]
 
 const MONTHS = {
   "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -26,7 +26,7 @@ const MONTHS = {
 
 const FIRST_DAY = {
   "en": 0,
-  "it": 1
+  "it": 1 // Use Monday as first day of the week
 }
 
 const localeUtils = {

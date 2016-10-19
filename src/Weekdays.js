@@ -2,23 +2,26 @@ import React, { PropTypes } from 'react';
 import DayPickerPropTypes from './PropTypes';
 
 export default function Weekdays({
+  firstDayOfWeek,
+  weekdaysLong,
+  weekdaysShort,
   locale,
   localeUtils,
-  weekdayComponent,
   weekdayElement,
 }) {
   const days = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 7; i += 1) {
+    const weekday = (i + firstDayOfWeek) % 7;
     const elementProps = {
       key: i,
       className: 'DayPicker-Weekday',
-      weekday: i,
+      weekday,
+      weekdaysLong,
+      weekdaysShort,
       localeUtils,
       locale,
     };
-    const element = weekdayElement ?
-      React.cloneElement(weekdayElement, elementProps) :
-      React.createElement(weekdayComponent, elementProps);
+    const element = React.cloneElement(weekdayElement, elementProps);
     days.push(element);
   }
 
@@ -32,8 +35,10 @@ export default function Weekdays({
 }
 
 Weekdays.propTypes = {
+  firstDayOfWeek: PropTypes.number.isRequired,
+  weekdaysLong: PropTypes.arrayOf(PropTypes.string),
+  weekdaysShort: PropTypes.arrayOf(PropTypes.string),
   locale: PropTypes.string.isRequired,
   localeUtils: DayPickerPropTypes.localeUtils.isRequired,
-  weekdayComponent: PropTypes.func,
   weekdayElement: PropTypes.element,
 };
