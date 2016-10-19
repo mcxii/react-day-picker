@@ -49,6 +49,7 @@ export default class DayPicker extends Component {
     onDayFocus: PropTypes.func,
     onMonthChange: PropTypes.func,
     onCaptionClick: PropTypes.func,
+    dayTitle: PropTypes.func,
 
     renderDay: PropTypes.func,
 
@@ -387,6 +388,7 @@ export default class DayPicker extends Component {
         tabIndex = this.props.tabIndex;
       }
     }
+    const title = this.props.dayTitle ? this.props.dayTitle(day) : undefined;
     const key = `${day.getFullYear()}${day.getMonth()}${day.getDate()}`;
     return (
       <Day
@@ -397,10 +399,13 @@ export default class DayPicker extends Component {
 
         tabIndex={ tabIndex }
 
+        title={ title }
         ariaLabel={ this.props.localeUtils.formatDay(day, this.props.locale) }
         ariaDisabled={ isOutside || dayModifiers.indexOf('disabled') > -1 }
         ariaSelected={ dayModifiers.indexOf('selected') > -1 }
 
+        onMouseDown={ this.props.onDayMouseDown }
+        onMouseUp={ this.props.onDayMouseUp }
         onMouseEnter={ this.props.onDayMouseEnter }
         onMouseLeave={ this.props.onDayMouseLeave }
         onKeyDown={ this.handleDayKeyDown }

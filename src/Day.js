@@ -18,6 +18,8 @@ export default function Day({
   tabIndex,
   empty,
   modifiers,
+  onMouseDown,
+  onMouseUp,
   onMouseEnter,
   onMouseLeave,
   onClick,
@@ -25,6 +27,7 @@ export default function Day({
   onTouchStart,
   onTouchEnd,
   onFocus,
+  title,
   ariaLabel,
   ariaDisabled,
   ariaSelected,
@@ -40,11 +43,14 @@ export default function Day({
       className={ className }
       tabIndex={ tabIndex }
       role="gridcell"
+      title={ title }
       aria-label={ ariaLabel }
       aria-disabled={ ariaDisabled.toString() }
       aria-selected={ ariaSelected.toString() }
       onClick={ handleEvent(onClick, day, modifiers) }
       onKeyDown={ handleEvent(onKeyDown, day, modifiers) }
+      onMouseDown={ handleEvent(onMouseDown, day, modifiers) }
+      onMouseUp={ handleEvent(onMouseUp, day, modifiers) }
       onMouseEnter={ handleEvent(onMouseEnter, day, modifiers) }
       onMouseLeave={ handleEvent(onMouseLeave, day, modifiers) }
       onTouchEnd={ handleEvent(onTouchEnd, day, modifiers) }
@@ -60,6 +66,7 @@ Day.propTypes = {
   day: PropTypes.instanceOf(Date).isRequired,
   children: PropTypes.node.isRequired,
 
+  title: PropTypes.string,
   ariaDisabled: PropTypes.bool,
   ariaLabel: PropTypes.string,
   ariaSelected: PropTypes.bool,
@@ -67,6 +74,8 @@ Day.propTypes = {
   modifiers: PropTypes.array,
   onClick: PropTypes.func,
   onKeyDown: PropTypes.func,
+  onMouseDown: PropTypes.func,
+  onMouseUp: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
   onTouchEnd: PropTypes.func,
