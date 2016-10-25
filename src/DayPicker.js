@@ -42,6 +42,8 @@ export default class DayPicker extends Component {
     onKeyDown: PropTypes.func,
     onDayClick: PropTypes.func,
     onDayKeyDown: PropTypes.func,
+    onDayMouseUp: PropTypes.func,
+    onDayMouseDown: PropTypes.func,
     onDayMouseEnter: PropTypes.func,
     onDayMouseLeave: PropTypes.func,
     onDayTouchStart: PropTypes.func,

@@ -622,6 +622,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onKeyDown: _react.PropTypes.func,
 	  onDayClick: _react.PropTypes.func,
 	  onDayKeyDown: _react.PropTypes.func,
+	  onDayMouseUp: _react.PropTypes.func,
+	  onDayMouseDown: _react.PropTypes.func,
 	  onDayMouseEnter: _react.PropTypes.func,
 	  onDayMouseLeave: _react.PropTypes.func,
 	  onDayTouchStart: _react.PropTypes.func,
